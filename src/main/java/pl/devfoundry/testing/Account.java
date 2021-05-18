@@ -4,7 +4,7 @@ public class Account {
 
     private boolean active;
 
-    public Account(){
+    public Account() {
         this.active = false;
     }
 
@@ -12,7 +12,7 @@ public class Account {
         return active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void activate() {
+        this.active = true;
     }
 }
