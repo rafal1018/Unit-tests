@@ -40,9 +40,6 @@ public class OrderTest {
     @Test
     void mealListShouldBeEmptyAfterCreationOfOrder() {
 
-        //given]
-
-
         //then
         assertThat(order.getMeals(), empty());
         assertThat(order.getMeals().size(), equalTo(0));

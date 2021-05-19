@@ -26,4 +26,11 @@ public class Order {
     public void cancel(){
         this.meals.clear();
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "meals=" + meals +
+                '}';
+    }
 }
