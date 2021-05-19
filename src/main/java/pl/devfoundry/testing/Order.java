@@ -22,4 +22,8 @@ public class Order {
     public void setMeals(List<Meal> meals) {
         this.meals = meals;
     }
+
+    public void cancel(){
+        this.meals.clear();
+    }
 }
