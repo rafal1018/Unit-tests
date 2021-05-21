@@ -1,6 +1,7 @@
 package pl.devfoundry.testing;
 
 import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -114,13 +115,13 @@ class MealTest {
 
     @ParameterizedTest
     @MethodSource("createCakeNames")
-    void cakeNamesShouldEndWIthCake(String name) {
+    void cakeNamesShouldEndWithCake(String name) {
         assertThat(name, notNullValue());
         assertThat(name, endsWith("cake"));
     }
 
     private static Stream<String> createCakeNames() {
-        List<String> cakeNames = Arrays.asList("Cheesecake", "Fruitcake", "Capcake");
+        List<String> cakeNames = Arrays.asList("Cheesecake", "Fruitcake", "Cupcake");
         return cakeNames.stream();
     }
 
@@ -132,6 +133,7 @@ class MealTest {
         );
     }
 
+    @Tag("fries")
     @TestFactory
     Collection<DynamicTest> calculateMealPrices() {
 

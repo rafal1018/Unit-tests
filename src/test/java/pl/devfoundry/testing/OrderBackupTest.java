@@ -30,6 +30,7 @@ public class OrderBackupTest {
         orderBackup.closeFile();
     }
 
+    @Tag("fries")
     @Test
     void bacupOrderWithOneMeal() throws IOException {
 
