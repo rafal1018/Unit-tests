@@ -3,8 +3,6 @@ package pl.devfoundry.testing.account;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pl.devfoundry.testing.account.Account;
-import pl.devfoundry.testing.account.Address;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -85,8 +83,20 @@ public class AccountTest {
 
         //then
         assumingThat(address != null, () -> {
-                    assertTrue(account.isActive());
-                });
+            assertTrue(account.isActive());
+        });
+    }
+
+    @Test
+    void invalidEmailShouldThrowException() {
+
+        //given
+        Account account = new Account();
+
+        //when
+        //then
+        assertThrows(IllegalStateException.class, () -> account.setEmail("wrongEmail"));
+
     }
 
 }

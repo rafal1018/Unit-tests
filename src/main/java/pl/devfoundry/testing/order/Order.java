@@ -25,8 +25,21 @@ public class Order {
         this.meals = meals;
     }
 
-    public void cancel(){
+    public void cancel() {
         this.meals.clear();
+    }
+
+    int totalPrice() {
+
+        int sum = this.meals.stream()
+                .mapToInt(Meal::getPrice)
+                .sum();
+
+        if (sum < 0) {
+            throw new IllegalStateException("Price limit exceeded");
+        } else {
+            return sum;
+        }
     }
 
     @Override

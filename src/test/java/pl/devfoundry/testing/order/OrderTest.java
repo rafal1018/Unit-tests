@@ -14,6 +14,7 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(BeforeAfterExtension.class)
 public class OrderTest {
@@ -121,5 +122,45 @@ public class OrderTest {
         assertThat(meals1, is(meals2));
 
     }
+
+    @Test
+    void orderTotalPriceShouldNotExceedMaxIntValue() {
+        //given
+        Meal meal = new Meal(Integer.MAX_VALUE, "Burger");
+        Meal meal2 = new Meal(Integer.MAX_VALUE, "Sandwich");
+
+        //when
+        order.addMealToOrder(meal);
+        order.addMealToOrder(meal2);
+
+        //then
+        assertThrows(IllegalStateException.class, () -> order.totalPrice());
+    }
+
+    @Test
+    void emptyOrderTotalPriceShouldEqualZero(){
+        //given
+        //Order is created in BeforeEach
+
+        //then
+        assertThat(order.totalPrice(), is(0));
+    }
+
+    @Test
+    void cancelingOrderShouldRemoveIemsFromMealList(){
+        //given
+        Meal meal = new Meal(Integer.MAX_VALUE, "Burger");
+        Meal meal2 = new Meal(Integer.MAX_VALUE, "Sandwich");
+
+        //when
+        order.addMealToOrder(meal);
+        order.addMealToOrder(meal2);
+        order.cancel();
+
+        //then
+        assertThat(order.getMeals().size(), is(0));
+    }
+
+
 
 }
