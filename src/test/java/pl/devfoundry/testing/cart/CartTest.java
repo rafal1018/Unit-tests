@@ -1,7 +1,8 @@
-package pl.devfoundry.testing;
+package pl.devfoundry.testing.cart;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pl.devfoundry.testing.Meal;
 import pl.devfoundry.testing.order.Order;
 
 import java.time.Duration;
@@ -12,7 +13,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 
-@DisplayName("Test cases for cart")
+@DisplayName("Test cases for pl.devfoundry.testing.cart")
 public class CartTest {
 
     //    @Disabled
@@ -54,7 +55,7 @@ public class CartTest {
                 is(not(emptyCollectionOf(Order.class)))
         ));
 
-        assertAll("This is a group of assertions for cart",
+        assertAll("This is a group of assertions for pl.devfoundry.testing.cart",
                 () -> assertThat(cart.getOrders(), notNullValue()),
                 () -> assertThat(cart.getOrders(), hasSize(1)),
                 () -> assertThat(cart.getOrders(), is(not(empty()))),

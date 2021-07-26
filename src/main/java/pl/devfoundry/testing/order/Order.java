@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Order {
 
+    private OrderStatus orderStatus;
     private List<Meal> meals = new ArrayList<>();
 
     public void addMealToOrder(Meal meal) {
@@ -27,6 +28,14 @@ public class Order {
 
     public void cancel() {
         this.meals.clear();
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void changeOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     int totalPrice() {
